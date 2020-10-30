@@ -7,5 +7,4 @@ function generateCodeFromObject(obj) {
 
 module.exports = generateCodeFromObject;
 
-//comm dn
 //ReactDOM.render(<App />, document.getElementById("root"));
