@@ -5,30 +5,29 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      time: new Date().toLocaleTimeString("en-US", {
-        hour: "numeric",
-        minute: "numeric",
-        second: "numeric",
+      time: new Date().toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
         hour12: true
       })
     };
   }
-  tick() {
+
+  update() {
     this.setState({
-      time: new Date().toLocaleTimeString("en-US", {
-        hour: "numeric",
-        minute: "numeric",
-        second: "numeric",
+      time: new Date().toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
         hour12: true
       })
     });
   }
 
   componentDidMount() {
-    this.intervalID = setInterval(() => this.tick(), 1000);
-  }
-  componentWillUnmount() {
-    clearInterval(this.intervalID);
+    this.intervalID = setInterval(() => this.update(), 1000);
+    return () => clearInterval(this.intervalID);
   }
   render() {
     return (
