@@ -12,6 +12,7 @@ class App extends Component {
         hour12: true
       })
     };
+    this.update = this.update.bind(this);
   }
 
   update() {
@@ -27,7 +28,9 @@ class App extends Component {
 
   componentDidMount() {
     this.intervalID = setInterval(() => this.update(), 1000);
-    return () => clearInterval(this.intervalID);
+  }
+  componentWillUnmount() {
+    clearInterval(this.intervalID);
   }
   render() {
     return (
